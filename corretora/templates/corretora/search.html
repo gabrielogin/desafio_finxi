@@ -1,0 +1,31 @@
+{% extends 'corretora/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+	<div class="bar-nav">
+	</div>
+	<!-- RESULTADOS -->
+    <div class="row" id="casa-propria">
+		<h1 class="center" >RESULTADOS</h1>
+		<div class="container carrosel">
+			{% for imovel in imoveis_cidade %}
+
+				<div class="col-md-3 center">
+					<img class="thumb-casa-propria center" src="{{ imovel.imagem }}" width="150px" height="150px">
+				    <h4 class="center"><a href="{% url 'corretora.views.imovel_detail' pk=imovel.pk %}">{{ imovel.title }}</a></h4>
+				    <h4>R${{ imovel.valor}},00</h4>
+				</div>
+			{% endfor %}
+			{% for imovel in imoveis_estado %}
+
+				<div class="col-md-3 center">
+					<img class="thumb-casa-propria center" src="{{ imovel.imagem }}" width="150px" height="150px">
+				    <h4 class="center"><a href="{% url 'corretora.views.imovel_detail' pk=imovel.pk %}">{{ imovel.title }}</a></h4>
+				    <h4>R${{ imovel.valor}},00</h4>
+				</div>
+			{% endfor %}
+		</div>
+    </div>
+
+{% endblock content %}

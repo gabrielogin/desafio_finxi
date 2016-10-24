@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Finxi Imóveis</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/corretora.css' %}"/>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+<body>
+	<!-- MENU -->
+	<button class="navbar-toggle" type="button" data-target=".navbar-collapse" data-toggle="collapse"> MENU </button>
+	<div class="menu">
+		<nav class="navbar navbar-collapse collapse" role="navigation">
+			<div class="container">
+			  <img id="logo" src="{% static 'uploads/Logo.png' %}" width="120px">
+			  <ul class="navbar-nav nav pull-right">
+				<li><a href="/">HOME</a></li>
+				<li><a href="/#aluguel">ALUGUEL</a></li>
+				<li><a href="#casa-propria">CASA PRÓPRIA</a></li>
+			  </ul>	  
+			 </div>
+		</nav>
+	</div>
+	<!-- USANDO OUTROS Templates -->
+        <div class="row">
+            {% block content %}
+            {% endblock %}
+        </div>
+	<div class="row center">
+		<div class="col-md-3 center carrosel">
+			<img src="{% static 'uploads/Logo.png' %}" width="290px">	
+		</div>
+		<div class="col-md-9 center carrosel">
+			<h3 class="footer">ENDEREÇO:</h3>
+			<h3 class="footer-description">Rua do Carmo, 72 - Niterói - Rio de Janeiro</h3>
+			<h3 class="footer">TELEFONE:</h3>
+			<h3 class="footer-description">+55 21 3711-0808</h3>
+			<a href="{% url 'corretora.views.imovel_new' %}"><h3 class="footer-description">ADMINISTRAÇÃO</h3></a>
+		</div>
+	</div>
+	
+		<div class="row center">
+			<p class="copyright">Copyrights 2016 - Criado por Gabriel Aguiar</p>
+		</div>
+</body>
+</html>

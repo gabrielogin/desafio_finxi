@@ -1,0 +1,13 @@
+{% extends 'corretora/base.html' %}
+
+{% block content %}
+	<div class="bar-nav">
+	</div>
+
+    <h1 class="new">Novo Imovel</h1>
+   <form method="POST" enctype="multipart/form-data"  class="imovel-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">PUBLICAR</button>
+    </form>
+
+{% endblock %}

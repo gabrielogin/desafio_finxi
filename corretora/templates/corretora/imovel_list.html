@@ -1,0 +1,103 @@
+{% extends 'corretora/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+	<!-- SLIDER -->
+	<div class="slider">
+		<img src="{% static 'uploads/slider.jpg' %}" alt="slider" width="100%">
+	</div>
+	<!-- BUSCA -->
+	<div class="row" id="busca">
+		<div class="col-md-2 carrosel">
+			<h3 class="pull-right no">ENCONTRE</h3>
+			<h3 class="pull-right no">SEU LAR</h3>
+		</div>
+		<div class="col-md-10 carrosel">
+			<form action="{% url 'corretora.views.imovel_search' %}" method="POST" class="form-buscar">{% csrf_token %}
+			<input type="text" name="search" placeholder="LOCAL" style="width: 75%;">
+			<button type="submit" class="button-buscar" ><h5>ENCONTRAR</h5></button>
+			</form>
+		</div>		
+	</div>
+
+	<!-- ALUGUEL -->
+    <div class="row" id="aluguel">
+		<h1 class="center">ALUGUEL</h1>	
+		<div class="container carrosel center">
+
+			{% for imovel in imoveis_al %}
+
+
+				<div class="col-md-3 center">
+					<img class="thumb-aluguel center" src="{{ imovel.imagem }}" width="150px" height="150px">
+				    <h4 class="center"><a href="{% url 'corretora.views.imovel_detail' pk=imovel.pk %}">{{ imovel.title }}</a></h4>
+				    <h4>R${{ imovel.valor}},00</h4>
+				</div>
+			{% endfor %}
+		</div>
+			<div class="container carrosel center">		
+				{% if imoveis_al.has_other_pages %}
+				  <ul class="pagination center">
+					{% if imoveis_al.has_previous %}
+					  <li><a href="?page_al={{ imoveis_al.previous_page_number }}">&laquo;</a></li>
+					{% else %}
+					  <li class="disabled"><span>&laquo;</span></li>
+					{% endif %}
+					{% for i in imoveis_al.paginator.page_range %}
+					  {% if imoveis_al.number == i %}
+						<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+					  {% else %}
+						<li><a href="?page_al={{ i }}">{{ i }}</a></li>
+					  {% endif %}
+					{% endfor %}
+					{% if imoveis_al.has_next %}
+					  <li><a href="?page_al={{ imoveis_al.next_page_number }}">&raquo;</a></li>
+					{% else %}
+					  <li class="disabled"><span>&raquo;</span></li>
+					{% endif %}
+				{% endif %}
+				  </ul>
+			</div>
+	</div>
+
+	<!-- CASA PROPRIA -->
+    <div class="row" id="casa-propria">
+		<h1 class="center">CASA PRÓPRIA</h1>
+		<div class="container carrosel">
+			{% for imovel in imoveis_cp %}
+
+				<div class="col-md-3 center">
+					<img class="thumb-casa-propria center" src="{{ imovel.imagem }}" width="150px" height="150px">
+				    <h4 class="center"><a href="{% url 'corretora.views.imovel_detail' pk=imovel.pk %}">{{ imovel.title }}</a></h4>
+				    <h4>R${{ imovel.valor}},00</h4>
+				</div>
+			{% endfor %}
+		</div>
+
+			<div class="container carrosel center">		
+				{% if imoveis_cp.has_other_pages %}
+				  <ul class="pagination center">
+					{% if imoveis_cp.has_previous %}
+					  <li><a href="?page_cp={{ imoveis_cp.previous_page_number }}">&laquo;</a></li>
+					{% else %}
+					  <li class="disabled"><span>&laquo;</span></li>
+					{% endif %}
+					{% for i in imoveis_cp.paginator.page_range %}
+					  {% if imoveis_cp.number == i %}
+						<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+					  {% else %}
+						<li><a href="?page_cp={{ i }}">{{ i }}</a></li>
+					  {% endif %}
+					{% endfor %}
+					{% if imoveis_cp.has_next %}
+					  <li><a href="?page_cp={{ imoveis.next_page_number }}">&raquo;</a></li>
+					{% else %}
+					  <li class="disabled"><span>&raquo;</span></li>
+					{% endif %}
+				{% endif %}
+				  </ul>
+			</div>
+    </div>
+
+{% endblock content %}

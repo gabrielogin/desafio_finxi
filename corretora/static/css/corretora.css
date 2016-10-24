@@ -1,0 +1,150 @@
+body {
+	font-family: 'Monstserrat', sans-serif;
+
+}
+
+a {
+	text-decoration: none;
+}
+
+h1 a,h1,h5, h4, h3, h4 a, h4 a:hover {
+    color: #fff;
+	text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+}
+
+#logo {
+	float: 'left';
+}
+
+li a, li a:hover {
+	color: #ffffff;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+	background-color: transparent;
+	  box-shadow: 0 25px 0px -23px white;
+}
+
+
+
+.menu {
+	margin-top: 4px;
+	z-index: 10;
+	position: absolute;
+}
+
+.slider {
+	z-index: -1;
+	background-image: url("../static/uploads/slider.jpg");
+}
+.center {
+	text-align: center;
+}
+
+#aluguel {
+	background-color: #7ead09;
+}
+
+#casa-propria {
+	background-color: #092356;
+}
+
+#busca {
+	background-color: #092356;
+}
+
+.row {
+	margin-left: 0px;
+}
+
+.thumb-aluguel {
+	border: solid 4px #092356;
+	border-radius: 5px;
+	position: initial ;
+	overflow: -moz-hidden-unscrollable;
+	padding: 0px;
+}
+
+.thumb-casa-propria {
+	border: solid 4px #7ead09;
+	border-radius: 5px;
+	position: initial ;
+}
+
+.carrosel {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.footer {
+	color: #092356;
+	font-weight: 700;
+	font-size: 20px;
+}
+.col-md-3, .col-md-5 {
+	position: initial;
+}
+
+.footer-description {
+	color: #092356;
+	font-weight: 400;
+	font-size: 20px;
+}
+
+.copyright {
+	color: white;
+	background-color: black;
+}
+
+.col-md-12 {
+	margin-left: 0px;
+}
+
+.bar-nav {
+	height: 60px;
+	background-color: #7ead09;
+}
+
+.detail {
+	color: #092356;
+}
+
+.image-detail {
+	overflow: hidden;
+}
+
+.col-detail {
+	background-color: #e9f8c6;
+}
+
+.proximo {
+	margin-left: 15px;
+}
+
+.no {
+	margin: 0px;
+	padding: 0px;
+}
+
+.form-buscar {
+	padding-top:10px;
+}
+
+.button-buscar {
+	width: 15%;
+	background-color: #7ead09;
+	border:none;
+	border-radius: 5px;
+	margin-left:5px;
+}
+
+.button-buscar:hover {
+	background-color: #658a09;
+	box-shadow: 0 20px 20px -15px white;
+}
+
+.new {
+	color: #7ead09;
+}

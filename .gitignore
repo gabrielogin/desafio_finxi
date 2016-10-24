@@ -1,0 +1,42 @@
+*.pyc
+__pycache__
+myvenv
+db.sqlite3
+.ICEauthority
+.Xauthority
+.bash_history
+.bash_logout
+.bashrc
+.cache/
+.cinnamon/
+.config/
+.dbus/
+.dmrc
+.face
+.gconf/
+.gksu.lock
+.ipython/
+.linuxmint/
+.local/
+.macromedia/
+.mozilla/
+.profile
+.rpmdb/
+.sudo_as_admin_successful
+.vboxclient-clipboard.pid
+.vboxclient-display.pid
+.vboxclient-draganddrop.pid
+.vboxclient-seamless.pid
+.xsession-errors
+Downloads/
+"blog (c\303\263pia)/"
+challange_finxi/
+"corretora (c\303\263pia).zip"
+"corretora (c\303\263pia)/"
+d
+dab.sqlite3
+"finxi (c\303\263pia).zip"
+"finxi (c\303\263pia)/"
+gabriel/
+migrations/
+.DS_Store
