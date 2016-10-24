@@ -3,6 +3,7 @@ from . import views
 from django.conf import settings
 from django.contrib import admin
 from django.conf.urls import *
+from django.contrib.auth import authenticate, login
 
 admin.site.index_template = 'admin/admin.html'
 admin.autodiscover()

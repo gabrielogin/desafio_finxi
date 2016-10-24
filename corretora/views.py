@@ -6,6 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from .forms import ImovelForm
 from django.shortcuts import redirect
 from django.template import *
+from django.contrib.auth.models import User
 
 def imovel_search(request):
 	search = request.POST.get('search')
@@ -34,54 +35,54 @@ def imovel_list(request):
 	except PageNotAnInteger:
 		imoveis_cp = paginator.page(1)
 	except EmptyPage:
-		posts_cp = paginator.page(paginator.num_pages)
+		imoveis_cp = paginator.page(paginator.num_pages)
 	return render(request, 'corretora/imovel_list.html', {'imoveis_al':imoveis_al, 'imoveis_cp':imoveis_cp})
 
 
 def imovel_detail(request, pk):
-	imovel = get_object_or_404(imovel, pk=pk)
-	imoveis = imovel.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	imovel = get_object_or_404(Imovel, pk=pk)
+	imoveis = Imovel.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	return render(request, 'corretora/imovel_detail.html', {'imovel': imovel, 'imoveis': imoveis})
 
 def imovel_new(request):
     if request.method == "POST":
-        form = PostForm(request.POST, request.FILES)
+        form = ImovelForm(request.POST, request.FILES)
         if form.is_valid():
             imovel = form.save(commit=False)
-            imovel.author = request.user
+            imovel.author = User.objects.get(username='finxi')
             imovel.published_date = timezone.now()
             imovel.save()
             return redirect('corretora.views.imovel_detail', pk=imovel.pk)
     else:
-        form = PostForm()
+        form = ImovelForm()
     return render(request, 'corretora/imovel_edit.html', {'form': form})
 
 def imovel_edit(request, pk):
     imovel = get_object_or_404(Imovel, pk=pk)
     if request.method == "POST":
-        form = PostForm(request.POST, request.FILES)
+        form = ImovelForm(request.POST, request.FILES)
         if form.is_valid():
             imovel = form.save(commit=False)
-            imovel.author = request.user
+            imovel.author = User.objects.get(username='finxi')
             imovel.published_date = timezone.now()
             imovel.save()
             return redirect('corretora.views.imovel_detail', pk=imovel.pk)
     else:
-        form = PostForm(instance=post)
+        form = ImovelForm(instance=imovel)
     return render(request, 'corretora/imovel_edit.html', {'form': form})
 
 def imovel_delete(request, pk):
     imovel = get_object_or_404(Imovel, pk=pk).delete()
     if request.method == "POST":
-        form = PostForm(request.POST, request.FILES)
+        form = ImovelForm(request.POST, request.FILES)
         if form.is_valid():
             imovel = form.save(commit=False)
-            imovel.author = request.user
+            imovel.author = User.objects.get(username='finxi')
             imovel.published_date = timezone.now()
             imovel.save()
             return redirect('corretora.views.imovel_list')
     else:
-        form = PostForm(instance=post)
+        form = ImovelForm(instance=imovel)
     return render(request, 'corretora/imovel_delete.html', {'form': form})
 
 

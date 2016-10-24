@@ -9,24 +9,24 @@
 			<img class="image-detail" src="/{{ imovel.imagem }}" width="100%">			
 		</div>
 		<div class="col-md-8 col-detail">
-			<h1 class="detail">{{ imovel.title }}</h1>
+			<h1 class="detail">{{ imovel.nome }}</h1>
 			<a class="btn btn-default" href="{% url 'imovel_edit' pk=imovel.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
 			<a class="btn btn-default" href="{% url 'imovel_delete' pk=imovel.pk %}"><span class="glyphicon glyphicon-trash"></span></a> 
 			<h1 class="detail">R$ {{ imovel.valor }},00</h1>
-			<h2 class="detail">{{ imovel.text|linebreaksbr }}</h2>
+			<h2 class="detail">{{ imovel.descricao|linebreaksbr }}</h2>
 			<h4 class="detail">{{ imovel.endereco }} - {{ imovel.cidade }} - {{ imovel.estado }}</h4>
 		</div>
-		{% with post as principal %}
+		{% with imovel as principal %}
     </div>
 	<div class="row" id="casa-propria">
 		<h3 class="proximo">IMÓVEIS PRÓXIMOS</h3>	
 		<p>{{ pk }}</p>
-		{% for post in imoveis %}
-			{% if imovel.cidade|lower == principal.cidade|lower or imovel.estado|lower == principal.estado|lower and imovel.pk != principal.pk %}
+		{% for imovel in imoveis %}
+			{% if imovel.cidade|lower == principal.cidade|lower and imovel.pk != principal.pk %}
 			
 				<div class="col-md-3 center">
 					<img class="thumb-casa-propria center" src="{{ imovel.imagem }}" width="150px" height="150px">
-				    <h4 class="center"><a href="{% url 'corretora.views.imovel_detail' pk=imovel.pk %}">{{ imovel.title }}</a></h4>
+				    <h4 class="center"><a href="{% url 'corretora.views.imovel_detail' pk=imovel.pk %}">{{ imovel.nome }}</a></h4>
 				    <h4>R${{ imovel.valor}},00</h4>
 				</div>
 			{% endif %}

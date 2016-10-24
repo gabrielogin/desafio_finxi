@@ -15,7 +15,7 @@
 		</div>
 		<div class="col-md-10 carrosel">
 			<form action="{% url 'corretora.views.imovel_search' %}" method="POST" class="form-buscar">{% csrf_token %}
-			<input type="text" name="search" placeholder="LOCAL" style="width: 75%;">
+			<input type="descricao" name="search" placeholder="LOCAL" style="width: 75%;">
 			<button type="submit" class="button-buscar" ><h5>ENCONTRAR</h5></button>
 			</form>
 		</div>		
@@ -31,7 +31,7 @@
 
 				<div class="col-md-3 center">
 					<img class="thumb-aluguel center" src="{{ imovel.imagem }}" width="150px" height="150px">
-				    <h4 class="center"><a href="{% url 'corretora.views.imovel_detail' pk=imovel.pk %}">{{ imovel.title }}</a></h4>
+				    <h4 class="center"><a href="{% url 'corretora.views.imovel_detail' pk=imovel.pk %}">{{ imovel.nome }}</a></h4>
 				    <h4>R${{ imovel.valor}},00</h4>
 				</div>
 			{% endfor %}
@@ -69,7 +69,7 @@
 
 				<div class="col-md-3 center">
 					<img class="thumb-casa-propria center" src="{{ imovel.imagem }}" width="150px" height="150px">
-				    <h4 class="center"><a href="{% url 'corretora.views.imovel_detail' pk=imovel.pk %}">{{ imovel.title }}</a></h4>
+				    <h4 class="center"><a href="{% url 'corretora.views.imovel_detail' pk=imovel.pk %}">{{ imovel.nome }}</a></h4>
 				    <h4>R${{ imovel.valor}},00</h4>
 				</div>
 			{% endfor %}
